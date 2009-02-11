@@ -2,7 +2,7 @@ module ActiveRecord
   class BaseWithoutTable < Base
     self.abstract_class = true
     
-    def create_or_update
+    def create_or_update_without_callbacks
       errors.empty?
     end
     
