@@ -5,6 +5,10 @@ module ActiveRecord
     def create_or_update_without_callbacks
       errors.empty?
     end
+
+    def destroy_without_callbacks
+      errors.empty?
+    end
     
     class << self
       def columns()
