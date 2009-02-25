@@ -3,13 +3,20 @@ module ActiveRecord
     self.abstract_class = true
     
     def create_or_update_without_callbacks
-      errors.empty?
+      self.new_record? ? create_without_callbacks : update_without_callbacks
     end
-
+    def create_without_callbacks
+      @new_record = false if answer = errors.empty?
+      answer
+    end
+    def update_without_callbacks
+      @new_record = false if answer = errors.empty?
+      answer
+    end
     def destroy_without_callbacks
       errors.empty?
     end
-    
+
     class << self
       def columns()
         @columns ||= []
