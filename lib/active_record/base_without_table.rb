@@ -26,6 +26,8 @@ module ActiveRecord
         columns << ActiveRecord::ConnectionAdapters::Column.new(name.to_s, default, sql_type.to_s, null)
         reset_column_information
       end
+
+      alias_method :add_column, :column #HOBO defines column for its own use
       
       # Do not reset @columns
       def reset_column_information
